@@ -6,7 +6,7 @@ using System.Reflection;
 using Valitru.Helpers;
 using Valitru.Interfaces;
 
-namespace Valitru
+namespace Valitru.Rules
 {
     public class ValidationRule
     {
@@ -54,7 +54,7 @@ namespace Valitru
 
         #region "Fluent Methods"
 
-        public ValidationRule<T> ValidIf(Func<T, bool> validationFunction)
+        public virtual ValidationRule<T> ValidIf(Func<T, bool> validationFunction)
         {
             if (validationFunction == null) { throw new ArgumentNullException(nameof(validationFunction)); }
 

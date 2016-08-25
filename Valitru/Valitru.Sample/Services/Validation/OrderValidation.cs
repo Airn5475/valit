@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using Valitru.Rules;
+using Valitru.Rules.Library;
 using Valitru.Sample.Interfacs;
 using Valitru.Sample.Models;
 
@@ -51,6 +53,13 @@ namespace Valitru.Sample.Services.Validation
                 .SetErrorMessage(order => $"The confirmation number '{order.ConfirmationNumber}' is already in use.")
                 .AddInvalidMember(order => order.ConfirmationNumber);
 
+        public ValidationRule<Order> RuleOrderMustHaveAShippingAddressStreet1WhenMarkedAsShipped()
+            =>
+            new StringCannotBeNullOrWhitespaceRule<Order>()
+                .MemberToValidate(order => order.ShippingAddressStreet1)
+                .OnlyCheckIf(order => order.OrderStatus == OrderStatuses.Shipped)
+                .SetErrorMessage("ShippingAddress is blank.")
+                .AddInvalidMember(order => order.ShippingAddressStreet1);
 
         public override ValidationRules<Order> AllRules() => new ValidationRules<Order>
         {
@@ -58,7 +67,8 @@ namespace Valitru.Sample.Services.Validation
             {
                 RuleOrderCannotHaveAShippedDateLaterThanDatePlaced(),
                 RuleOrderMarkedAsShippedMustHaveAShippedDate(),
-                RuleOrderCannotHaveDuplicateConfirmationNumber()
+                RuleOrderCannotHaveDuplicateConfirmationNumber(),
+                RuleOrderMustHaveAShippingAddressStreet1WhenMarkedAsShipped()
             }
         };
     }

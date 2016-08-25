@@ -1,4 +1,6 @@
-﻿namespace Valitru
+﻿using Valitru.Rules;
+
+namespace Valitru
 {
     public abstract class ValidationServiceBase<T>
     {

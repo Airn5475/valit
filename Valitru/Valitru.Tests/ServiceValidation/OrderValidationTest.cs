@@ -54,5 +54,27 @@ namespace Valitru.Tests.ServiceValidation
             //Assert
             Assert.IsFalse(res.IsValid);
         }
+        
+        [TestMethod]
+        public void RuleOrderMustHaveAShippingAddressStreet1WhenMarkedAsShipped_ShippedWithStreet1_Valid()
+        {
+            //Arrange
+            var order = new Order { OrderStatus = OrderStatuses.Shipped, ShippingAddressStreet1 = "206 Riffel"};
+            //Act
+            var res = _orderValidation.RuleOrderMustHaveAShippingAddressStreet1WhenMarkedAsShipped().Validate(order);
+            //Assert
+            Assert.IsTrue(res.IsValid);
+        }
+
+        [TestMethod]
+        public void RuleOrderMustHaveAShippingAddressStreet1WhenMarkedAsShipped_ShippedWithStreet1_NotValid()
+        {
+            //Arrange
+            var order = new Order { OrderStatus = OrderStatuses.Shipped, ShippingAddressStreet1 = null };
+            //Act
+            var res = _orderValidation.RuleOrderMustHaveAShippingAddressStreet1WhenMarkedAsShipped().Validate(order);
+            //Assert
+            Assert.IsFalse(res.IsValid);
+        }
     }
 }

@@ -9,6 +9,9 @@ namespace Valitru.Sample.Models
         public DateTime? ShipDateTime { get; set; }
         public OrderStatuses OrderStatus { get; set; }
         public string ConfirmationNumber { get; set; }
+        public string ShippingAddressStreet1 { get; set; }
+        public string ShippingAddressStreet2 { get; set; }
+        public string ShippingAddressCity { get; set; }
     }
 
     public enum OrderStatuses

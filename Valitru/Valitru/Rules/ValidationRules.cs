@@ -2,7 +2,7 @@
 using Valitru.Helpers;
 using Valitru.Interfaces;
 
-namespace Valitru
+namespace Valitru.Rules
 {
     public class ValidationRules<T> : IValidationRule<T>
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Valitru.Interfaces;
 
-namespace Valitru
+namespace Valitru.Rules
 {
     public class ConditionalValidationRule
     {
