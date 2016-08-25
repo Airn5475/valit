@@ -2,15 +2,16 @@ using System;
 
 namespace Valitru.Rules
 {
-    public abstract class CustomValidationRuleBase<T, TMember> : ConditionalValidationRule<T>
+    public abstract class CustomValidationRuleBase<T, TMember> : ValidationRule<T>
     {
-        public Func<T, TMember> Member { get; set; }
+        protected Func<T, TMember> Member { get; set; }
 
-        public ConditionalValidationRule<T> MemberToValidate(Func<T, TMember> property)
+        public ValidationRule<T> MemberToValidate(Func<T, TMember> member)
         {
-            this.Member = property;
+            if (member == null) { throw new ArgumentNullException(nameof(member)); }
+            Member = member;
             return this;
         }
-        
+
     }
 }

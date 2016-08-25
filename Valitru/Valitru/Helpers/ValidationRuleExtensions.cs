@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Valitru.Interfaces;
+using Valitru.Rules;
 
 namespace Valitru.Helpers
 {
@@ -24,9 +25,9 @@ namespace Valitru.Helpers
             return res;
         }
 
-        public static IEnumerable<IConditionalValidationRule<T>> FilterRulesByTheirCondition<T>(this IEnumerable<IConditionalValidationRule<T>> rules, T instance)
+        public static IEnumerable<ValidationRule<T>> FilterRulesByTheirCondition<T>(this IEnumerable<ValidationRule<T>> rules, T instance)
         {
-            return rules.Where(r => r.ValidationCondition(instance));
+            return rules.Where(r => r.IsApplicable(instance));
         }
     }
 }

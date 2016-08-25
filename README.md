@@ -30,7 +30,7 @@ Conditional Rules differ in that they are only validated if the object meets the
 ```C#
 public ValidationRule<Order> RuleOrderCannotHaveAShippedDateLaterThanDatePlaced()
     =>
-    ConditionalValidationRule.NewRule<Order>()
+    ValidationRule.NewRule<Order>()
         .OnlyCheckIf(order => order.ShipDateTime.HasValue)
         .ValidIf(order => order.ShipDateTime.Value >= order.OrderDateTime)
         .SetErrorMessage(order => $"Order Ship Date/Time '{order.ShipDateTime.Value}' is invalid")

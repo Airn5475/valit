@@ -20,13 +20,12 @@ namespace Valitru.Sample.Services.Validation
             =>
             ValidationRule.NewRule<Order>()
                 .ValidIf(order => DateTime.Now >= order.OrderDateTime)
-                .SetErrorMessage(order => $"Order has an invalid Date/Time of {order.OrderDateTime }")
+                .SetErrorMessage(order => $"Order has an invalid Date/Time of {order.OrderDateTime}")
                 .AddInvalidMember(order => order.OrderDateTime);
-
-
+        
         public ValidationRule<Order> RuleOrderCannotHaveAShippedDateLaterThanDatePlaced()
             =>
-            ConditionalValidationRule.NewRule<Order>()
+            ValidationRule.NewRule<Order>()
                 .OnlyCheckIf(order => order.ShipDateTime.HasValue)
                 .ValidIf(order => order.ShipDateTime.Value >= order.OrderDateTime)
                 .SetErrorMessage(order => $"Order has a Ship Date/Time of {order.ShipDateTime.Value} which is earlier than the Date/Time it was placed of { order.OrderDateTime }")
@@ -35,7 +34,7 @@ namespace Valitru.Sample.Services.Validation
 
         public ValidationRule<Order> RuleOrderMarkedAsShippedMustHaveAShippedDate()
             =>
-            ConditionalValidationRule.NewRule<Order>()
+            ValidationRule.NewRule<Order>()
                 .OnlyCheckIf(order => order.OrderStatus == OrderStatuses.Shipped)
                 .ValidIf(order => order.ShipDateTime.HasValue)
                 .SetErrorMessage("Order is marked as shipped, but has no Ship Date/Time specified")
@@ -43,7 +42,7 @@ namespace Valitru.Sample.Services.Validation
 
         public ValidationRule<Order> RuleOrderCannotHaveDuplicateConfirmationNumber()
             =>
-            ConditionalValidationRule.NewRule<Order>()
+            ValidationRule.NewRule<Order>()
                 .OnlyCheckIf(order => !string.IsNullOrWhiteSpace(order.ConfirmationNumber))
                 .ValidIf(order =>
                 {

@@ -41,12 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Rules\ConditionalValidationRule.cs" />
     <Compile Include="Rules\CustomValidationRuleBase.cs" />
     <Compile Include="Rules\Library\StringCannotBeNullOrWhitespaceRule.cs" />
     <Compile Include="Helpers\ValidationResultHelper.cs" />
     <Compile Include="Helpers\ValidationRuleExtensions.cs" />
-    <Compile Include="Interfaces\IConditionalValidationRule.cs" />
     <Compile Include="Interfaces\IValidationRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rules\ValidationRule.cs" />

@@ -18,6 +18,8 @@ namespace Valitru.Rules
 
     public class ValidationRule<T> : IValidationRule<T>
     {
+        private Func<T, bool> ValidationCondition { get; set; } = T => true;
+
         private Func<T, bool> ValidationFunction { get; set; }
 
         private Func<T, string> ErrorMessageFunction { get; set; }
@@ -32,9 +34,16 @@ namespace Valitru.Rules
         }
 
         internal ValidationRule() { }
-        
+
+        public bool IsApplicable(T instance)
+        {
+            return !ValidationCondition(instance);
+        }
+
         public virtual ValidationRuleResult Validate(T instance)
         {
+            if (!IsApplicable(instance)) { return ValidationRuleResult.ValidationNotApplicableResult(); }
+
             if (ValidationFunction == null) { throw new ArgumentNullException(nameof(ValidationFunction)); }
 
             var res = new ValidationRuleResult
@@ -52,9 +61,18 @@ namespace Valitru.Rules
             return res;
         }
 
-        #region "Fluent Methods"
+        #region Fluent Methods
 
-        public virtual ValidationRule<T> ValidIf(Func<T, bool> validationFunction)
+        public ValidationRule<T> OnlyCheckIf(Func<T, bool> validationConditionFunction)
+        {
+            if (validationConditionFunction == null) { throw new ArgumentNullException(nameof(validationConditionFunction)); }
+
+            ValidationCondition = validationConditionFunction;
+
+            return this;
+        }
+
+        public ValidationRule<T> ValidIf(Func<T, bool> validationFunction)
         {
             if (validationFunction == null) { throw new ArgumentNullException(nameof(validationFunction)); }
 
