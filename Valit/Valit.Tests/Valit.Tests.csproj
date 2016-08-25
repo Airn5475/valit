@@ -51,8 +51,14 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MockRepositories\OrderRepositoryMock.cs" />
+    <Compile Include="ServiceValidation\OrderValidationTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Valit.Sample\Valit.Sample.csproj">
+      <Project>{52DA3F76-2443-4C33-A7BF-18B40C6B0B10}</Project>
+      <Name>Valit.Sample</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Valit\Valit.csproj">
       <Project>{e5ddba21-3182-4850-baf6-5e2792ca8597}</Project>
       <Name>Valit</Name>

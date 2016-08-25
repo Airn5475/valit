@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Valit.Sample.Interfacs;
 using Valit.Sample.Models;
 using Valit.Sample.Repositories;
 
@@ -10,9 +11,9 @@ namespace Valit.Sample.Services.Validation
 {
     public class OrderValidation : ValidationServiceBase<Order>
     {
-        private readonly OrderRepository _orderRepository;
+        private readonly IOrderRepository _orderRepository;
 
-        public OrderValidation(OrderRepository orderRepository)
+        public OrderValidation(IOrderRepository orderRepository)
         {
             _orderRepository = orderRepository;
         }
@@ -40,7 +41,7 @@ namespace Valit.Sample.Services.Validation
                 .OnlyCheckIf(order => !string.IsNullOrWhiteSpace(order.ConfirmationNumber))
                 .ValidIf(order =>
                 {
-                    var orders = _orderRepository.GetOrdersByConfirmatiaonNumber(order.ConfirmationNumber).Where(o => o.OrderId == order.OrderId);
+                    var orders = _orderRepository.GetOrdersByConfirmationNumber(order.ConfirmationNumber).Where(o => o.OrderId == order.OrderId);
                     return !orders.Any();
                 })
                 .SetErrorMessage(order => $"The confirmation number '{order.ConfirmationNumber}' is already in use.")
