@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace Valit
+namespace Valitru
 {
     public class ValidationRuleResult
     {

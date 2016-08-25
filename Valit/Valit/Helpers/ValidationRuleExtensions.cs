@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Valit.Interfaces;
+using Valitru.Interfaces;
 
-namespace Valit.Helpers
+namespace Valitru.Helpers
 {
     public static class ValidationRuleExtensions
     {

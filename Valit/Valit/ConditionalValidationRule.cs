@@ -1,7 +1,7 @@
 ﻿using System;
-using Valit.Interfaces;
+using Valitru.Interfaces;
 
-namespace Valit
+namespace Valitru
 {
     public class ConditionalValidationRule
     {

@@ -6,8 +6,8 @@
     <ProjectGuid>{B61A2896-9DEA-4DF0-B0E8-A1BB76B9848A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Valit.Tests</RootNamespace>
-    <AssemblyName>Valit.Tests</AssemblyName>
+    <RootNamespace>Valitru.Tests</RootNamespace>
+    <AssemblyName>Valitru.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -55,13 +55,13 @@
     <Compile Include="ServiceValidation\OrderValidationTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Valit.Sample\Valit.Sample.csproj">
+    <ProjectReference Include="..\Valit.Sample\Valitru.Sample.csproj">
       <Project>{52DA3F76-2443-4C33-A7BF-18B40C6B0B10}</Project>
-      <Name>Valit.Sample</Name>
+      <Name>Valitru.Sample</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Valit\Valit.csproj">
+    <ProjectReference Include="..\Valit\Valitru.csproj">
       <Project>{e5ddba21-3182-4850-baf6-5e2792ca8597}</Project>
-      <Name>Valit</Name>
+      <Name>Valitru</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

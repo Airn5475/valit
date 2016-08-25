@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Valit.Sample.Models;
+using Valitru.Sample.Models;
 
-namespace Valit.Sample.Interfacs
+namespace Valitru.Sample.Interfacs
 {
     public interface IOrderRepository
     {

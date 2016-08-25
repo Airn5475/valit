@@ -1,4 +1,4 @@
-﻿namespace Valit.Interfaces
+﻿namespace Valitru.Interfaces
 {
     public interface IValidationRule<in T>
     {

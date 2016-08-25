@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Valit.Sample.Interfacs;
-using Valit.Sample.Models;
-using Valit.Sample.Repositories;
+using Valitru.Sample.Interfacs;
+using Valitru.Sample.Models;
 
-namespace Valit.Tests.MockRepositories
+namespace Valitru.Tests.MockRepositories
 {
     internal class OrderRepositoryMock : IOrderRepository
     {

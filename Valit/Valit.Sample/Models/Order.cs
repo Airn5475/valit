@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Valit.Sample.Models
+namespace Valitru.Sample.Models
 {
     public class Order
     {

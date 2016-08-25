@@ -7,8 +7,8 @@
     <ProjectGuid>{52DA3F76-2443-4C33-A7BF-18B40C6B0B10}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Valit.Sample</RootNamespace>
-    <AssemblyName>Valit.Sample</AssemblyName>
+    <RootNamespace>Valitru.Sample</RootNamespace>
+    <AssemblyName>Valitru.Sample</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -48,9 +48,9 @@
     <Compile Include="Services\Validation\OrderValidation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Valit\Valit.csproj">
+    <ProjectReference Include="..\Valit\Valitru.csproj">
       <Project>{e5ddba21-3182-4850-baf6-5e2792ca8597}</Project>
-      <Name>Valit</Name>
+      <Name>Valitru</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

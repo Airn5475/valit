@@ -1,4 +1,4 @@
-﻿namespace Valit
+﻿namespace Valitru
 {
     public abstract class ValidationServiceBase<T>
     {

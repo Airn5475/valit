@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Valit.Sample.Models;
-using Valit.Sample.Repositories;
-using Valit.Sample.Services.Validation;
+﻿using Valitru.Sample.Models;
+using Valitru.Sample.Repositories;
+using Valitru.Sample.Services.Validation;
 
-namespace Valit.Sample.Services
+namespace Valitru.Sample.Services
 {
     public class OrderService
     {

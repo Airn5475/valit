@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using Valit.Helpers;
-using Valit.Interfaces;
+using Valitru.Helpers;
+using Valitru.Interfaces;
 
-namespace Valit
+namespace Valitru
 {
     public class ValidationRules<T> : IValidationRule<T>
     {

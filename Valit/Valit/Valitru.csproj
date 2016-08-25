@@ -7,8 +7,8 @@
     <ProjectGuid>{E5DDBA21-3182-4850-BAF6-5E2792CA8597}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Valit</RootNamespace>
-    <AssemblyName>Valit</AssemblyName>
+    <RootNamespace>Valitru</RootNamespace>
+    <AssemblyName>Valitru</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

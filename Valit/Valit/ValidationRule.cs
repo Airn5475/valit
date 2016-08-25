@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using Valit.Helpers;
-using Valit.Interfaces;
+using Valitru.Helpers;
+using Valitru.Interfaces;
 
-namespace Valit
+namespace Valitru
 {
     public class ValidationRule
     {

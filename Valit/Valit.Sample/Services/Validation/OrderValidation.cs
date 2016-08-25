@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Valit.Sample.Interfacs;
-using Valit.Sample.Models;
-using Valit.Sample.Repositories;
+﻿using System.Linq;
+using Valitru.Sample.Interfacs;
+using Valitru.Sample.Models;
 
-namespace Valit.Sample.Services.Validation
+namespace Valitru.Sample.Services.Validation
 {
     public class OrderValidation : ValidationServiceBase<Order>
     {

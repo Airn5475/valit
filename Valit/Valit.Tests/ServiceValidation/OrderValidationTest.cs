@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Valit.Sample.Interfacs;
-using Valit.Sample.Models;
-using Valit.Sample.Services.Validation;
-using Valit.Tests.MockRepositories;
+using Valitru.Sample.Interfacs;
+using Valitru.Sample.Models;
+using Valitru.Sample.Services.Validation;
+using Valitru.Tests.MockRepositories;
 
-namespace Valit.Tests.ServiceValidation
+namespace Valitru.Tests.ServiceValidation
 {
     [TestClass]
     public class OrderValidationTest

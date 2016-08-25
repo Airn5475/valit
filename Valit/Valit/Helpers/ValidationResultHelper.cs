@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Valit.Helpers
+namespace Valitru.Helpers
 {
     public class ValidationResultHelper
     {

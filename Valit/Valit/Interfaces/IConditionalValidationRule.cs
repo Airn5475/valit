@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Valit.Interfaces
+namespace Valitru.Interfaces
 {
     public interface IConditionalValidationRule<T> : IValidationRule<T>
     {
