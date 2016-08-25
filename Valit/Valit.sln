@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valit", "Valit\Valit.csproj", "{E5DDBA21-3182-4850-BAF6-5E2792CA8597}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valit.Tests", "Valit.Tests\Valit.Tests.csproj", "{B61A2896-9DEA-4DF0-B0E8-A1BB76B9848A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E5DDBA21-3182-4850-BAF6-5E2792CA8597}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5DDBA21-3182-4850-BAF6-5E2792CA8597}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5DDBA21-3182-4850-BAF6-5E2792CA8597}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B61A2896-9DEA-4DF0-B0E8-A1BB76B9848A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B61A2896-9DEA-4DF0-B0E8-A1BB76B9848A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B61A2896-9DEA-4DF0-B0E8-A1BB76B9848A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B61A2896-9DEA-4DF0-B0E8-A1BB76B9848A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
