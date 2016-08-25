@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Valitru.Sample.Interfacs;
 using Valitru.Sample.Models;
 
@@ -12,6 +13,14 @@ namespace Valitru.Sample.Services.Validation
         {
             _orderRepository = orderRepository;
         }
+
+        public ValidationRule<Order> RuleOrderPlacedDateTimeMustBeInThePast()
+            =>
+            ValidationRule.NewRule<Order>()
+                .ValidIf(order => DateTime.Now >= order.OrderDateTime)
+                .SetErrorMessage(order => $"Order has an invalid Date/Time of {order.OrderDateTime }")
+                .AddInvalidMember(order => order.OrderDateTime);
+
 
         public ValidationRule<Order> RuleOrderCannotHaveAShippedDateLaterThanDatePlaced()
             =>
