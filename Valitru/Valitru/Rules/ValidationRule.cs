@@ -37,7 +37,7 @@ namespace Valitru.Rules
 
         public bool IsApplicable(T instance)
         {
-            return !ValidationCondition(instance);
+            return ValidationCondition(instance);
         }
 
         public virtual ValidationRuleResult Validate(T instance)
