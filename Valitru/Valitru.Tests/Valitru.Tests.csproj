@@ -55,11 +55,11 @@
     <Compile Include="ServiceValidation\OrderValidationTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Valit.Sample\Valitru.Sample.csproj">
+    <ProjectReference Include="..\Valitru.Sample\Valitru.Sample.csproj">
       <Project>{52DA3F76-2443-4C33-A7BF-18B40C6B0B10}</Project>
       <Name>Valitru.Sample</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Valit\Valitru.csproj">
+    <ProjectReference Include="..\Valitru\Valitru.csproj">
       <Project>{e5ddba21-3182-4850-baf6-5e2792ca8597}</Project>
       <Name>Valitru</Name>
     </ProjectReference>

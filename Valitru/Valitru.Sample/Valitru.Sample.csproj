@@ -48,7 +48,7 @@
     <Compile Include="Services\Validation\OrderValidation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Valit\Valitru.csproj">
+    <ProjectReference Include="..\Valitru\Valitru.csproj">
       <Project>{e5ddba21-3182-4850-baf6-5e2792ca8597}</Project>
       <Name>Valitru</Name>
     </ProjectReference>
