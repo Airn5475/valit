@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Valit")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Valitru")]
+[assembly: AssemblyDescription("Valitru (Validation+Unit+Rule) is a basic framework created to do rule based validation.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Valit")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2016")]
+[assembly: AssemblyCompany("Aaron W Bauman")]
+[assembly: AssemblyProduct("Valitru")]
+[assembly: AssemblyCopyright("Copyright © Aaron W Bauman 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
