@@ -3,8 +3,8 @@
   <metadata>
     <id>$id$</id>
     <version>$version$</version>
-    <title>$title$</title>
-    <authors>$author$</authors>
+    <title>Valitru</title>
+    <authors>Aaron Bauman</authors>
     <owners>$author$</owners>
     <projectUrl>https://github.com/Airn5475/valitru</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -12,5 +12,8 @@
     <releaseNotes>Initial Release</releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>validation unit test unittesting</tags>
+	<frameworkAssemblies>
+	  <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations"  />
+	</frameworkAssemblies>
   </metadata>
 </package>
