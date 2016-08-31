@@ -16,11 +16,13 @@ namespace Valitru.Rules
         }
     }
 
-    public class ValidationRule<T> : IValidationRule<T>
+    public class ValidationRule<T> : IValidationRule<T>, IStopProcessing
     {
         private Func<T, bool> ValidationCondition { get; set; } = T => true;
 
         private Func<T, bool> ValidationFunction { get; set; }
+
+        public bool StopProcessingIfInvalid { get; private set; }
 
         private Func<T, string> ErrorMessageFunction { get; set; }
 
@@ -61,6 +63,12 @@ namespace Valitru.Rules
             return res;
         }
 
+        public virtual ValidationRuleResult Validate<TEntity>(TEntity instance)
+        {
+
+            return ValidationRuleResult.ValidationPassedResult();
+        }
+
         #region Fluent Methods
 
         public ValidationRule<T> OnlyCheckIf(Func<T, bool> validationConditionFunction)
@@ -78,6 +86,12 @@ namespace Valitru.Rules
 
             ValidationFunction = validationFunction;
 
+            return this;
+        }
+
+        public ValidationRule<T> StopProcessingMoreRulesIfValidationFails()
+        {
+            StopProcessingIfInvalid = true;
             return this;
         }
 

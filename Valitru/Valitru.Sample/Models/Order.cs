@@ -5,6 +5,7 @@ namespace Valitru.Sample.Models
     public class Order
     {
         public int? OrderId { get; set; }
+        public int CustomerId { get; set; }
         public DateTime OrderDateTime { get; set; }
         public DateTime? ShipDateTime { get; set; }
         public OrderStatuses OrderStatus { get; set; }

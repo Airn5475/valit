@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IStopProcessing.cs" />
     <Compile Include="Rules\CustomValidationRuleBase.cs" />
+    <Compile Include="Rules\StopProcessingIfInvalidCheckpoint.cs" />
     <Compile Include="Rules\Library\StringCannotBeNullOrWhitespaceRule.cs" />
     <Compile Include="Helpers\ValidationResultHelper.cs" />
     <Compile Include="Helpers\ValidationRuleExtensions.cs" />

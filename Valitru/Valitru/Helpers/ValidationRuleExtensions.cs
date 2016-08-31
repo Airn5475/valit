@@ -11,10 +11,15 @@ namespace Valitru.Helpers
         public static ValidationRuleResult Validate<T>(this IEnumerable<IValidationRule<T>> validationRules, T instance)
         {
             var validationResults = new List<ValidationResult>();
-            
+
             foreach (var vr in validationRules)
             {
-                validationResults.AddRange(vr.Validate(instance).ValidationResults);
+                if (vr is StopProcessingIfInvalidCheckpoint<T> && validationResults.Any()) { break; }
+                var result = vr.Validate(instance);
+                if (result.IsValid) { continue; }
+                validationResults.AddRange(result.ValidationResults);
+                var stopProcessing = vr as IStopProcessing;
+                if (stopProcessing != null && stopProcessing.StopProcessingIfInvalid) { break; }
             }
 
             var res = new ValidationRuleResult

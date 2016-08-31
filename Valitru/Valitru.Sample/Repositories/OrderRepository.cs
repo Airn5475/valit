@@ -13,6 +13,11 @@ namespace Valitru.Sample.Repositories
             return Enumerable.Empty<Order>();
         }
 
+        public IEnumerable<Order> GetOrdersForCustomerForMonth(int customerId, DateTime forMonth)
+        {
+            return Enumerable.Empty<Order>();
+        }
+
         public void Save(Order orderToBePlaced)
         {
             throw new NotImplementedException();

@@ -46,9 +46,10 @@ namespace Valitru.Sample.Services.Validation
                 .OnlyCheckIf(order => !string.IsNullOrWhiteSpace(order.ConfirmationNumber))
                 .ValidIf(order =>
                 {
-                    var orders = _orderRepository.GetOrdersByConfirmationNumber(order.ConfirmationNumber).Where(o => o.OrderId == order.OrderId);
+                    var orders = _orderRepository.GetOrdersByConfirmationNumber(order.ConfirmationNumber).Where(o => o.OrderId != order.OrderId);
                     return !orders.Any();
                 })
+                .StopProcessingMoreRulesIfValidationFails()
                 .SetErrorMessage(order => $"The confirmation number '{order.ConfirmationNumber}' is already in use.")
                 .AddInvalidMember(order => order.ConfirmationNumber);
 
@@ -60,14 +61,29 @@ namespace Valitru.Sample.Services.Validation
                 .SetErrorMessage("ShippingAddress is blank.")
                 .AddInvalidMember(order => order.ShippingAddressStreet1);
 
+        public ValidationRule<Order> RuleCustomersCannotHaveMoreThanFiveOrdersAMonth()
+            =>
+            ValidationRule.NewRule<Order>()
+                .OnlyCheckIf(order => !order.OrderId.HasValue)
+                .ValidIf(order =>
+                {
+                    var orders = _orderRepository.GetOrdersForCustomerForMonth(order.CustomerId, order.OrderDateTime);
+                    return orders.Count() < 5;
+                })
+                .SetErrorMessage("Customers can only place 5 orders a month.");
+
+
         public override ValidationRules<Order> AllRules() => new ValidationRules<Order>
         {
             Rules =
             {
+                RuleOrderPlacedDateTimeMustBeInThePast(),
                 RuleOrderCannotHaveAShippedDateLaterThanDatePlaced(),
                 RuleOrderMarkedAsShippedMustHaveAShippedDate(),
                 RuleOrderCannotHaveDuplicateConfirmationNumber(),
-                RuleOrderMustHaveAShippingAddressStreet1WhenMarkedAsShipped()
+                RuleOrderMustHaveAShippingAddressStreet1WhenMarkedAsShipped(),
+                new StopProcessingIfInvalidCheckpoint<Order>(),
+                RuleCustomersCannotHaveMoreThanFiveOrdersAMonth()
             }
         };
     }
