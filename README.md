@@ -5,6 +5,7 @@ In a nutshell, you can create rules with custom logic and use them to validate a
 This is not simply my version of a "rules engine".  Each rule in this framework allows custom logic to determine it's validity.
 
 [![Build status](https://ci.appveyor.com/api/projects/status/jyyrg2j7x02yqo8v?svg=true)](https://ci.appveyor.com/project/Airn5475/valitru)
+[![nuget](https://img.shields.io/nuget/v/Valitru.svg)](https://www.nuget.org/packages/Valitru)
 
 ####Goal 1: Improve the testability of validation rules by allowing each rule to be tested separately.
 Many times, object validation is done in a single method with many if statements.  This requires a developer to code a Unit Test that will pass *all* preceeding rules until it reachs the desired rule.
