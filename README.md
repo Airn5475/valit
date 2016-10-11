@@ -37,6 +37,19 @@ public ValidationRule<Order> RuleOrderCannotHaveAShippedDateLaterThanDatePlaced(
         .AddInvalidMember(order => order.ShipDateTime);
 ```
 
+## Stop Processing Upon Failure
+At times there will be a rule where if it fails, you want to immediately stop processing any further rules and kick out. You can call the `StopProcessingMoreRulesIfValidationFails` method to implement this.
+```C#
+public ValidationRule<Order> RuleOrderCannotHaveAShippedDateLaterThanDatePlaced()
+    =>
+    ValidationRule.NewRule<Order>()
+        .OnlyCheckIf(order => order.ShipDateTime.HasValue)
+        .ValidIf(order => order.ShipDateTime.Value >= order.OrderDateTime)
+        .StopProcessingMoreRulesIfValidationFails()
+        .SetErrorMessage(order => $"Order Ship Date/Time '{order.ShipDateTime.Value}' is invalid")
+        .AddInvalidMember(order => order.ShipDateTime);
+```
+
 ## Validation Class
 The pattern involves creating a class that inherits from `ValidationServiceBase<T>` and overrides the `AllRules()` method.
 ```C#
@@ -50,6 +63,27 @@ public class OrderValidation : ValidationServiceBase<Order>
         {
             RuleOrderPlacedDateTimeMustBeInThePast(),
             RuleOrderCannotHaveAShippedDateLaterThanDatePlaced()
+        }
+    };
+}
+```
+
+## StopProcessingIfInvalidCheckpoint
+There are often many simple rules that we want to run and return any failures in bulk.  Those rules, due to their simplicity, may appear first in the list, followed by more complicated rules, that may do things such as hitting up a database.  If our simple rules have failed, why bother hitting the database?  Enter the 'StopProcessingIfInvalidCheckpoint'.  This class is an easy way to say, "If any rules have proven invalid by the time you arrive at this checkpoint, just return".  In the example below, we will process the first three rules and if any fail, we will never even check the rules that follow after the checkpoint.
+```C#
+public class OrderValidation : ValidationServiceBase<Order>
+{
+    //rules...
+    
+    public override ValidationRules<Order> AllRules() => new ValidationRules<Order>
+    {
+        Rules =
+        {
+            RuleOrderMarkedAsShippedMustHaveAShippedDate(),
+            RuleOrderCannotHaveDuplicateConfirmationNumber(),
+            RuleOrderMustHaveAShippingAddressStreet1WhenMarkedAsShipped(),
+            new StopProcessingIfInvalidCheckpoint<Order>(),
+            RuleCustomersCannotHaveMoreThanFiveOrdersAMonth()
         }
     };
 }
