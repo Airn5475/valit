@@ -13,6 +13,8 @@ namespace Valitru.Sample.Models
         public string ShippingAddressStreet1 { get; set; }
         public string ShippingAddressStreet2 { get; set; }
         public string ShippingAddressCity { get; set; }
+        public bool FreeShipping { get; set; }
+        public decimal SubTotal { get; set; }
     }
 
     public enum OrderStatuses

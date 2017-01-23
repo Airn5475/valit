@@ -24,12 +24,13 @@ namespace Valitru.Tests.MockRepositories
             return returnList;
         }
 
-        private IEnumerable<Order> GenerateOrdersForCustomer(int customerId, int numberOfOrders, DateTime ordeDateTime)
+        private IEnumerable<Order> GenerateOrdersForCustomer(int customerId, int numberOfOrders, DateTime orderDateTime)
         {
             var orderIdBase = customerId * 100;
+            
             for (var i = 1; i <= numberOfOrders; i++)
             {
-                yield return new Order() { CustomerId = customerId, OrderId = orderIdBase + i, OrderDateTime = ordeDateTime };
+                yield return new Order() { CustomerId = customerId, OrderId = orderIdBase + i, OrderDateTime = orderDateTime, SubTotal = 25 };
             }
         }
 

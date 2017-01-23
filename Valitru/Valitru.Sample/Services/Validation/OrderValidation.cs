@@ -72,6 +72,11 @@ namespace Valitru.Sample.Services.Validation
                 })
                 .SetErrorMessage("Customers can only place 5 orders a month.");
 
+        public ValidationRule<Order> RuleCustomersGetFreeShippingIfOverOneHundredDollarsAMonth()
+            =>
+                new RuleFreeShippingIfOverOneHundredDollars<Order>(_orderRepository)
+                    .SetParameters(o => o.FreeShipping, o => o.CustomerId, o => o.OrderDateTime);
+            
 
         public override ValidationRules<Order> AllRules() => new ValidationRules<Order>
         {
@@ -79,11 +84,13 @@ namespace Valitru.Sample.Services.Validation
             {
                 RuleOrderPlacedDateTimeMustBeInThePast(),
                 RuleOrderCannotHaveAShippedDateLaterThanDatePlaced(),
+                RuleOrderCannotHaveAShippedDateLaterThanDatePlaced(),
                 RuleOrderMarkedAsShippedMustHaveAShippedDate(),
                 RuleOrderCannotHaveDuplicateConfirmationNumber(),
                 RuleOrderMustHaveAShippingAddressStreet1WhenMarkedAsShipped(),
                 new StopProcessingIfInvalidCheckpoint<Order>(),
-                RuleCustomersCannotHaveMoreThanFiveOrdersAMonth()
+                RuleCustomersCannotHaveMoreThanFiveOrdersAMonth(),
+                RuleCustomersGetFreeShippingIfOverOneHundredDollarsAMonth()
             }
         };
     }

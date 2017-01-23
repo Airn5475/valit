@@ -101,6 +101,45 @@ namespace Valitru.Tests.ServiceValidation
         }
 
         [TestMethod]
+        public void RuleFreeShippingIfOverOneHundredDollars_CustomerHas75DollarsTotal_NotValid()
+        {
+            //Arrange
+            var order = new Order { CustomerId = 2, OrderDateTime = DateTime.Today, FreeShipping = true };
+            //Act
+            var res = _orderValidation.RuleCustomersGetFreeShippingIfOverOneHundredDollarsAMonth().Validate(order);
+            //Assert
+            Assert.IsFalse(res.IsValid);
+        }
+
+        [TestMethod]
+        public void RuleFreeShippingIfOverOneHundredDollars_CustomerHas125DollarsTotal_Valid()
+        {
+            //Arrange
+            var order = new Order { CustomerId = 1, OrderDateTime = DateTime.Today, FreeShipping = true };
+            //Act
+            var res = _orderValidation.RuleCustomersGetFreeShippingIfOverOneHundredDollarsAMonth().Validate(order);
+            //Assert
+            Assert.IsTrue(res.IsValid);
+        }
+
+        [TestMethod]
+        public void AllRules_RuleFreeShippingIfOverOneHundredDollars_CustomerHas75DollarsTotal_Valid()
+        {
+            //Arrange
+            var order = new Order
+            {
+                CustomerId = 2,
+                OrderDateTime = DateTime.Today,
+                FreeShipping = false,
+                ConfirmationNumber = new Guid().ToString()
+            };
+            //Act
+            var res = _orderValidation.Validate(order);
+            //Assert
+            Assert.IsTrue(res.IsValid);
+        }
+
+        [TestMethod]
         public void AllRulesStopProcessing_OrderHasDuplicateConfirmationNumber_NoShippingStreetAddressChecked()
         {
             //Arrange
@@ -112,6 +151,26 @@ namespace Valitru.Tests.ServiceValidation
                 ShippingAddressStreet1 = null,
                 ShipDateTime = DateTime.Today.AddDays(-1),
                 ConfirmationNumber = "Duplicate"
+            };
+            //Act
+            var res = _orderValidation.AllRules().Validate(order);
+            //Assert
+            Assert.IsFalse(res.IsValid);
+            Assert.AreEqual(1, res.ValidationResults.Count());
+        }
+
+        [TestMethod]
+        public void AllRulesStopProcessing_OrderDoesNotHaveDuplicateConfirmationNumber_ShippingStreetAddressChecked()
+        {
+            //Arrange
+            var order = new Order
+            {
+                OrderId = 1,
+                OrderDateTime = DateTime.Today.AddDays(-3),
+                OrderStatus = OrderStatuses.Shipped,
+                ShippingAddressStreet1 = null,
+                ShipDateTime = DateTime.Today.AddDays(-1),
+                ConfirmationNumber = null
             };
             //Act
             var res = _orderValidation.AllRules().Validate(order);
