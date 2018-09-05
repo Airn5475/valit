@@ -7,10 +7,10 @@ This is not simply my version of a "rules engine".  Each rule in this framework 
 [![Build status](https://ci.appveyor.com/api/projects/status/jyyrg2j7x02yqo8v?svg=true)](https://ci.appveyor.com/project/Airn5475/valitru)
 [![nuget](https://img.shields.io/nuget/v/Valitru.svg)](https://www.nuget.org/packages/Valitru)
 
-####Goal 1: Improve the testability of validation rules by allowing each rule to be tested separately.
+#### Goal 1: Improve the testability of validation rules by allowing each rule to be tested separately.
 Many times, object validation is done in a single method with many if statements.  This requires a developer to code a Unit Test that will pass *all* preceeding rules until it reachs the desired rule.
 
-####Goal 2: Provide a simple, clean and consistent interface for validation.
+#### Goal 2: Provide a simple, clean and consistent interface for validation.
 All rules are registered and when validation is called for, *all* rules are checked\*.  
 This single call for validation prevents rules from getting lost in the daily development shuffle of adding new methods where validation is needed.  
 \* *The exception being that the object may not meet the conditional rule's criteria.*
